@@ -134,6 +134,7 @@ footer { text-align:center; color: var(--text-muted); font-size:12px; margin-top
     <button class="nav-tab section-tab active" data-section="overview">📊 Visão Geral</button>
     <button class="nav-tab section-tab" data-section="weekly">📅 Desempenho Semanal</button>
     <button class="nav-tab section-tab" data-section="loss">📉 Motivos de Perda</button>
+    <button class="nav-tab section-tab" data-section="methodology">📋 Metodologia e Ressalvas</button>
   </div>
 </nav>
 
@@ -407,28 +408,6 @@ footer { text-align:center; color: var(--text-muted); font-size:12px; margin-top
       </div>
     </section>
 
-    <section class="panel methodology">
-      <div class="panel-head"><h2>Metodologia e ressalvas</h2></div>
-      <h3>Fontes e período</h3>
-      <ul>
-        <li>Canal humano: Tiledesk, departamento "Vendas - Atendimento - Melhor Plano" (282 leads válidos, testes internos já excluídos).</li>
-        <li>Canal bot: Tiledesk, departamento "Vendas Online" (150 leads válidos, testes internos já excluídos) — vendas fechadas pelo fluxo automatizado no WhatsApp, sem atendente.</li>
-        <li>Ciclos de venda alinhados à planilha de metas (METAS LOJA), não ao mês calendário.</li>
-      </ul>
-      <h3>Casamento com contratos (Trino)</h3>
-      <ul>
-        <li>CPF não disponível — casamento por hash SHA-256 de telefone/e-mail contra <span class="mono">contratos_comercial</span>, com desempate por força de evidência, status do contrato e proximidade de data.</li>
-        <li>12 vendas do bot também apareciam no canal humano (mesmo contrato); a taxa do bot é a do canal isolado (sem descontar essa sobreposição) — o número de vendas "100% diretas do bot" sem repetição fica em 67.</li>
-      </ul>
-      <h3>Atendente, coordenador e motivos de perda</h3>
-      <ul>
-        <li>Atendente = quem fechou a conversa no Tiledesk (ou participou, se ficou aberta). Coordenador = "gestor direto" na planilha METAS LOJA.</li>
-        <li>O canal bot não tem atendente nem coordenador — o contrato é registrado por um processo automatizado.</li>
-        <li>Motivo de perda = tag registrada no Tiledesk ao fechar a conversa (Crédito Reprovado, Inviabilidade/sem cobertura, Cliente da base, Visitante ausente, Abandono, menor de idade). Conversas sem tag específica entram em "Sem motivo registrado".</li>
-        <li>Os rankings, KPIs e motivos de perda recalculam para o ciclo selecionado acima — um atendente sem vendas naquele ciclo específico não aparece na lista dele.</li>
-      </ul>
-    </section>
-
   </div>
 
   <div class="section-panel" data-section="weekly" hidden>
@@ -630,6 +609,30 @@ footer { text-align:center; color: var(--text-muted); font-size:12px; margin-top
         </div>
         <div class="loss-note">O canal bot é 100% automatizado — a maioria das conversas perdidas não recebe uma tag de motivo no Tiledesk, por isso a categoria "Sem motivo registrado" concentra quase todos os casos aqui.</div>
       </div></section>
+  </div>
+
+  <div class="section-panel" data-section="methodology" hidden>
+    <section class="panel methodology">
+      <div class="panel-head"><h2>Metodologia e ressalvas</h2></div>
+      <h3>Fontes e período</h3>
+      <ul>
+        <li>Canal humano: Tiledesk, departamento "Vendas - Atendimento - Melhor Plano" (282 leads válidos, testes internos já excluídos).</li>
+        <li>Canal bot: Tiledesk, departamento "Vendas Online" (150 leads válidos, testes internos já excluídos) — vendas fechadas pelo fluxo automatizado no WhatsApp, sem atendente.</li>
+        <li>Ciclos de venda alinhados à planilha de metas (METAS LOJA), não ao mês calendário.</li>
+      </ul>
+      <h3>Casamento com contratos (Trino)</h3>
+      <ul>
+        <li>CPF não disponível — casamento por hash SHA-256 de telefone/e-mail contra <span class="mono">contratos_comercial</span>, com desempate por força de evidência, status do contrato e proximidade de data.</li>
+        <li>12 vendas do bot também apareciam no canal humano (mesmo contrato); a taxa do bot é a do canal isolado (sem descontar essa sobreposição) — o número de vendas "100% diretas do bot" sem repetição fica em 67.</li>
+      </ul>
+      <h3>Atendente, coordenador e motivos de perda</h3>
+      <ul>
+        <li>Atendente = quem fechou a conversa no Tiledesk (ou participou, se ficou aberta). Coordenador = "gestor direto" na planilha METAS LOJA.</li>
+        <li>O canal bot não tem atendente nem coordenador — o contrato é registrado por um processo automatizado.</li>
+        <li>Motivo de perda = tag registrada no Tiledesk ao fechar a conversa (Crédito Reprovado, Inviabilidade/sem cobertura, Cliente da base, Visitante ausente, Abandono, menor de idade). Conversas sem tag específica entram em "Sem motivo registrado".</li>
+        <li>Os rankings, KPIs e motivos de perda recalculam para o ciclo selecionado acima — um atendente sem vendas naquele ciclo específico não aparece na lista dele.</li>
+      </ul>
+    </section>
   </div>
 
   <footer>Tiledesk + Trino · 432 leads válidos nos dois canais · dados até 22/09/2026</footer>
